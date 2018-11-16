@@ -52,10 +52,42 @@ if (!skipAutoconf) {
   const packageJson = require('./package.json');
   const serviceName = 'mongoose';
   const moduleName = packageJson.name;
-  const defaultConf = {};
+  const defaultConf = {
+    host: "localhost",
+    port: 27017,
+    db: 'test'
+  };
 
   if (!skipPrompt) {
-    const questions = [];
+    const questions = [
+      {
+        type: 'input',
+        name: 'host',
+        message: "mongoDB host",
+        default: defaultConf.host,
+        validate: function(value) {
+          return true;
+        }
+      },
+      {
+        type: 'input',
+        name: 'port',
+        message: "mongoDB port",
+        default: defaultConf.port,
+        validate: function(value) {
+          return ~~(value) > 0;
+        }
+      },
+      {
+        type: 'input',
+        name: 'db',
+        message: "mongoDB database name",
+        default: defaultConf.db,
+        validate: function(value) {
+          return true;
+        }
+      }
+    ];
 
     inquirer.prompt(questions).then(conf => {
       generate(serviceName, moduleName, conf);
