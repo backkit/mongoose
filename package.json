@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/backkit/mongoose/issues"
   },
-  "homepage": "https://github.com/backkit/mongoose#readme"
+  "homepage": "https://github.com/backkit/mongoose#readme",
+  "dependencies": {
+    "mongoose": "^5.3.12"
+  }
 }
