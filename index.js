@@ -14,7 +14,8 @@ class MongooseService {
       promiseLibrary: global.Promise,
       poolSize: 4,
       keepAlive: true,
-      keepAliveInitialDelay: 300000
+      keepAliveInitialDelay: 300000,
+      useUnifiedTopology: true
     };
     if (mconf.user) this.options.user = mconf.user;
     if (mconf.pass) this.options.pass = mconf.pass;
