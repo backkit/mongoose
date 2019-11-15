@@ -19,7 +19,11 @@ class MongooseService {
     if (mconf.user) this.options.user = mconf.user;
     if (mconf.pass) this.options.pass = mconf.pass;
 
-    mongoose.connect(this.connectUrl, this.options);
+    // only connect if a runnable service is set
+    // otherwise it will prevent process from exit
+    if (process.env.ENTRYPOINT) {
+      mongoose.connect(this.connectUrl, this.options);
+    }
     this.connection = mongoose.connection;
 
     // subscribers to first successful connection event
