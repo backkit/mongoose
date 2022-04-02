@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/backkit/mongoose#readme",
   "dependencies": {
-    "mongoose": "^5.3.12"
+    "inquirer": "^8.2.2",
+    "mongoose": "^5.13.14"
   },
   "publishConfig": {
     "access": "public"
