@@ -20,8 +20,7 @@
   },
   "homepage": "https://github.com/backkit/mongoose#readme",
   "dependencies": {
-    "inquirer": "^8.2.2",
-    "js-yaml": "^3.14.1",
+    "@backkit/autoconf": "^0.1.1",
     "mongoose": "^5.13.14"
   },
   "publishConfig": {
