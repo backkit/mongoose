@@ -7,18 +7,20 @@ class MongooseService {
     this.models = {};
     this.schemas = {};
     this.appdir = appdir;
-    this.connectUrl = `mongodb://${mconf.host}:${mconf.port}/${mconf.db}`;
-    this.options = {
-      useNewUrlParser: true,
-      reconnectTries: Number.MAX_VALUE,
-      promiseLibrary: global.Promise,
-      poolSize: 4,
-      keepAlive: true,
-      keepAliveInitialDelay: 300000,
-      useUnifiedTopology: true
-    };
+
+    if (mconf.url) {
+      // prefered way to connect
+      this.connectUrl = mconf.url;
+    } else {
+      // retro compatible with 0.1.0
+      this.connectUrl = `mongodb://${mconf.host}:${mconf.port}/${mconf.db}`;
+    }
+    
+    this.options = Object.assign({
+    },mconf.options||{});
     if (mconf.user) this.options.user = mconf.user;
     if (mconf.pass) this.options.pass = mconf.pass;
+    if (mconf.db) this.options.dbName = mconf.db;
 
     // only connect if a runnable service is set
     // otherwise it will prevent process from exit

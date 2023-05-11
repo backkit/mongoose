@@ -21,7 +21,7 @@
   "homepage": "https://github.com/backkit/mongoose#readme",
   "dependencies": {
     "@backkit/autoconf": "^0.1.1",
-    "mongoose": "^5.13.14"
+    "mongoose": "^7.1.1"
   },
   "publishConfig": {
     "access": "public"
